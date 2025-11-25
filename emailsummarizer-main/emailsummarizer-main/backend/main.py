@@ -23,6 +23,12 @@ origins = [
     "http://127.0.0.1:5173",
 ]
 
+# Add production frontend origin from environment variable
+frontend_origin = os.getenv("FRONTEND_ORIGIN")
+if frontend_origin:
+    origins.append(frontend_origin)
+    print(f"Added FRONTEND_ORIGIN to CORS: {frontend_origin}")
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
