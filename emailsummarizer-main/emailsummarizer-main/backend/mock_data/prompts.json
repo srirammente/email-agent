@@ -1,0 +1,5 @@
+{
+    "categorization": "Categorize the following email into one of these categories: Important, Newsletter, Spam, To-Do. Return ONLY the category name.",
+    "action_item": "Extract any action items or tasks from the email. Return them as a JSON list of strings. If none, return an empty list.",
+    "auto_reply": "Draft a polite and professional reply to this email. Keep it concise. Use the context of the email to formulate the response."
+}

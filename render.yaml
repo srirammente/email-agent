@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: email-summarizer-backend
+    env: python
+    rootDir: emailsummarizer-main/emailsummarizer-main/emailsummarizer-main/backend
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
+    autoDeploy: true
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: SUMMARY_PROMPT
+        value: "Summarize the email clearly and concisely."
+      - key: CATEGORY_PROMPT
+        value: "Categorize the email into Work, Personal, Important, or Spam."
+      - key: ACTION_ITEMS_PROMPT
+        value: "Extract actionable tasks with optional deadlines."
+      - key: FRONTEND_ORIGIN
+        value: "https://YOUR-NETLIFY-SITE.netlify.app"

@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+python-dotenv
+google-generativeai
+google-auth-oauthlib
+google-api-python-client
+pydantic
+SQLAlchemy==1.4.32
+alembic==1.8.1

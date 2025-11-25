@@ -1,0 +1,49 @@
+# Node / Vite
+node_modules/
+dist/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.*
+
+# Vite cache
+.vite/
+
+# Frontend build artifacts
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.venv/
+venv/
+
+# IDE/OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Backend DB / credentials
+**/backend/email_agent.db
+**/backend/credentials.json
+**/backend/.env
+# Global sensitive artifacts
+credentials.json
+email_agent.db
+
+# Coverage/pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Misc
+*.swp
+*.swo
