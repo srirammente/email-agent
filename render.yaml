@@ -16,4 +16,4 @@ services:
       - key: ACTION_ITEMS_PROMPT
         value: "Extract actionable tasks with optional deadlines."
       - key: FRONTEND_ORIGIN
-        value: "https://YOUR-NETLIFY-SITE.netlify.app"
+        value: "https://email-agent-ovqj.netlify.app"

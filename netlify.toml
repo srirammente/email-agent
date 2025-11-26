@@ -4,7 +4,7 @@ command = "npm ci && npm run build"
 publish = "dist"
 
 [build.environment]
-VITE_API_BASE_URL = "https://YOUR-RENDER-BACKEND.onrender.com"
+VITE_API_BASE_URL = "https://email-agent-ovqj.onrender.com"
 
 [[redirects]]
 from = "/*"
