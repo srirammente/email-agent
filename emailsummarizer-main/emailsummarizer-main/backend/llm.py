@@ -12,7 +12,7 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 # Configure the model if the key is present
 if GEMINI_API_KEY:
     genai.configure(api_key=GEMINI_API_KEY)
-    model = genai.GenerativeModel('gemini-2.5-flash')
+    model = genai.GenerativeModel('gemini-2.5-flash-live')
 else:
     model = None
     print("WARNING: No GEMINI_API_KEY found. LLM features will be disabled/mocked.")
