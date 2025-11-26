@@ -50,7 +50,7 @@ See `backend/.env.example`:
 
 ### Netlify (Frontend)
 - Netlify reads `netlify.toml`:
-  - `base = "emailsummarizer-main/emailsummarizer-main/emailsummarizer-main/frontend"`
+  - `base = "emailsummarizer-main/emailsummarizer-main/frontend"`
   - `command = "npm ci && npm run build"`
   - `publish = "dist"`
   - SPA redirects are configured.
@@ -59,7 +59,7 @@ See `backend/.env.example`:
 ### Render (Backend)
 - Render reads `render.yaml`:
   - Type: `web`, Env: `python`
-  - `rootDir: emailsummarizer-main/emailsummarizer-main/emailsummarizer-main/backend`
+  - `rootDir: emailsummarizer-main/emailsummarizer-main/backend`
   - `buildCommand: pip install -r requirements.txt`
   - `startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT`
   - Env vars: `GEMINI_API_KEY`, optional prompt vars, `FRONTEND_ORIGIN` set to your Netlify domain (e.g. `https://<netlify-site>.netlify.app`).

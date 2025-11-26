@@ -1,5 +1,5 @@
 [build]
-base = "emailsummarizer-main/emailsummarizer-main/emailsummarizer-main/frontend"
+base = "emailsummarizer-main/emailsummarizer-main/frontend"
 command = "npm ci && npm run build"
 publish = "dist"
 
