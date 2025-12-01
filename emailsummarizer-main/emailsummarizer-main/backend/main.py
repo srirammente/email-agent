@@ -342,7 +342,9 @@ async def agent_chat(
     
     # 4. Call LLM
     # The LLM now has visibility into the inbox, specific email, and conversation history.
-    response = await llm_service.chat(request.query, full_context, request.history)
+    # Enable focus_mode if a specific email_id is provided
+    is_specific_email = bool(request.email_id)
+    response = await llm_service.chat(request.query, full_context, request.history, focus_mode=is_specific_email)
     return {"response": response}
 
 @app.post("/drafts", response_model=DraftResponse) # Add response_model for structured output

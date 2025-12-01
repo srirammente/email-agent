@@ -68,6 +68,9 @@ const EmailDetail = () => {
                     <button className="btn btn-secondary" onClick={processEmail} disabled={processing}>
                         {processing ? 'Processing...' : '✨ Analyze with AI'}
                     </button>
+                    <button className="btn btn-secondary" onClick={() => navigate(`/agent?emailId=${emailId}`)}>
+                        💬 Chat about this email
+                    </button>
                     <button className="btn btn-primary" onClick={() => setShowDraft(true)}>Reply</button>
                 </div>
             </div>

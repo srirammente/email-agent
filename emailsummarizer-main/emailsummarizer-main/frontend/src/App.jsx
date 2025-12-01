@@ -20,7 +20,7 @@ function App() {
         <Route path="/inbox/:emailId" element={<EmailDetail />} />
         <Route path="/drafts" element={<DraftList onSelectDraft={(d) => window.location.href = `/drafts/${d.id}`} />} />
         <Route path="/drafts/:draftId" element={<DraftLoader />} />
-        <Route path="/agent" element={<AgentChat emailId={selectedEmail ? selectedEmail.id : null} />} />
+        <Route path="/agent" element={<AgentChat />} />
         <Route path="/brain" element={<PromptBrain />} />
       </Routes >
     </Layout >

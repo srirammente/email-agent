@@ -117,7 +117,7 @@ class LLMService:
                 "metadata": {}
             }
 
-    async def chat(self, query: str, context: str, history: list = []) -> str:
+    async def chat(self, query: str, context: str, history: list = [], focus_mode: bool = False) -> str:
         history_str = ""
         if history:
             history_str = "Conversation History:\n"
@@ -126,7 +126,39 @@ class LLMService:
                 history_str += f"{role}: {msg.get('content')}\n"
             history_str += "\n"
 
-        system_instruction = """
+        if focus_mode:
+            # CONCISE MODE: For specific email discussions
+            system_instruction = """
+You are a helpful Email Productivity Agent. Your responses should be CONCISE and TO THE POINT.
+
+CRITICAL FORMATTING RULES:
+1. When user asks for action items ONLY, respond with JUST the action items in a bulleted list.
+2. When user asks for a summary ONLY, respond with JUST a single paragraph summary (2-3 sentences max). NO bullet points, NO "Key points:" headers.
+3. When user asks for specific information, provide ONLY that information.
+4. Use proper markdown formatting with bullet points (•) for lists.
+5. Keep responses SHORT and FOCUSED on what was asked.
+
+RESPONSE FORMATS:
+
+For "action items" or "action events" queries:
+• [Action item 1]
+• [Action item 2]
+• [Action item 3]
+
+For "summarize" queries:
+[A single, continuous paragraph summarizing the email in 2-3 sentences. Do not use bullet points or headers.]
+
+IMPORTANT:
+- Do NOT repeat the entire email content unless specifically asked.
+- Do NOT include unnecessary fields.
+- Do NOT be verbose - be direct and concise.
+- Use the conversation history to understand context.
+
+Keep your answers SHORT, CLEAR, and HELPFUL.
+"""
+        else:
+            # GENERAL MODE: For inbox overview and general questions
+            system_instruction = """
 You are a helpful Email Productivity Agent.
 When answering questions about emails, always format the email details clearly and professionally.
 Do not refer to emails as "Email 1" or "Email 2" in your final answer. Instead, use the email's subject or sender to identify it.
@@ -142,16 +174,20 @@ When listing or discussing specific emails, use a structured format with DOUBLE 
 
 **Action Items:** [List action items if any]
 
-**Action Items:** [List action items if any]
-
 -------------------
-
+Take the context of all the emails and keep it your memory
+Then when asked regarding information in the email or draft
+If asked spam important smth like pick the mails based on the categorization promt through which it is categorised
+be consice with prompts when asked regarding information in the email or draft
 If the user asks to perform an action (like "Draft a reply" or "Summarize this") without specifying an email, check the Conversation History.
 If the user was just discussing a specific email, assume they are referring to that one.
 Only ask for clarification if the context is truly ambiguous.
+Also just give a sample draft reply for that email in the chat no need to redirect anywhere just a draft mail for mail 
+now from the inbox just give me any deadlines or meeting to setup or attends just the dates...when asked something on a whole on the basis of inbox the formal shd be simple mail and task asked for like dates mention the dates and small contexts to and proper formatted sentnced content and the sender name shd be mentioned format in lines properly and make sure there is proper less spaving between each specification...Mention from email adress only 
 
 Keep your answers concise and helpful.
 """
+
         prompt = f"{system_instruction}\n\nContext:\n{context}\n\n{history_str}User Query: {query}\n\nAnswer:"
         return await self.generate_text(prompt)
 
