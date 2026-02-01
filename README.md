@@ -102,6 +102,7 @@ sequenceDiagram
 ### Data Flow Architecture
 
 ```mermaid
+%% Updated diagram with better color visibility
 flowchart LR
     subgraph "Input Sources"
         Gmail[Gmail API]
@@ -152,10 +153,10 @@ flowchart LR
     PromptDB --> Draft
     EmailDB --> Chat
     
-    style Cat fill:#ffd700
-    style Act fill:#ffd700
-    style Sum fill:#ffd700
-    style Draft fill:#ffd700
+    style Cat fill:#ff9800,stroke:#333,stroke-width:2px,color:#000
+    style Act fill:#ff9800,stroke:#333,stroke-width:2px,color:#000
+    style Sum fill:#ff9800,stroke:#333,stroke-width:2px,color:#000
+    style Draft fill:#ff9800,stroke:#333,stroke-width:2px,color:#000
 ```
 
 ### Database Schema
@@ -465,8 +466,8 @@ flowchart TD
     
     NetServe --> |CORS Request| RenderStart
     
-    style Netlify fill:#00c7b7
-    style Render fill:#46e3b7
+    style Netlify fill:#5e72e4,stroke:#333,stroke-width:2px,color:#fff
+    style Render fill:#2dce89,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 ---
@@ -484,7 +485,3 @@ flowchart TD
 ## 🤝 Contributing
 
 This project is a demonstration of modern full-stack development with AI integration. Feel free to fork and enhance!
-
-## 📄 License
-
-MIT License - See LICENSE file for details
